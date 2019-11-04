@@ -1,0 +1,22 @@
+{
+  "name": "exatasponsor",
+  "version": "1.0.0",
+  "description": "microservicio Sponsors",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertoaguilar1/exataSponsor.git"
+  },
+  "keywords": [
+    "sponsors"
+  ],
+  "author": "jaguilarh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertoaguilar1/exataSponsor/issues"
+  },
+  "homepage": "https://github.com/albertoaguilar1/exataSponsor#readme"
+}
