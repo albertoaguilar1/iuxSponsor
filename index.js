@@ -9,6 +9,8 @@ let app = express();
 
 // Import routes
 let apiRoutes = require('./api-routes');
+let swaggerUi = require('swagger-ui-express');
+let swaggerDocument = require('./swagger.json');
 // Configure bodyparser to handle post requests
 app.use(bodyParser.urlencoded({
     extended: true
@@ -30,6 +32,7 @@ var db = mongoose.connection;
 var port = process.env.PORT || 8083;
 
 // Send message for default URL
+app.use('/api-docs/sponsors', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get('/', (req, res) => res.send('Hello World with Express Sponsor'));
 

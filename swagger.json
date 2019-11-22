@@ -1,0 +1,184 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "IUX API Sponsors",
+      "description": " API CRUD de Sponsors",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:8083",
+    "basePath": "/api/",
+    "tags": [
+      {
+        "name": "Api:Sponsors",
+        "description": "API para el manejo de operaciones con sponsors"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/sponsors": {
+
+        "post": {
+          "tags": [
+            ""
+          ],
+          "description": "Create new Sponsors in system",
+          "parameters": [
+            {
+              "name": "Sponsors",
+              "in": "body",
+              "description": "User that we want to create",
+              "schema": {
+                "$ref": "#/definitions/Sponsors"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New sponsor is created",
+              "schema": {
+                "$ref": "#/definitions/Sponsors"
+              }
+            }
+          }
+        }
+        ,
+
+        "get": {
+          "tags": [
+            "Sponsors"
+          ],
+          "summary": "Get all test in system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Sponsors"
+              }
+            }
+          }
+        }
+      },
+      "/sponsor/{sponsorId}": {
+        "parameters": [
+          {
+            "name": "sponsor",
+            "in": "path",
+            "required": true,
+            "description": "ID of Sponsors that we want to find",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Sponsors"
+          ],
+          "summary": "Get Sponsors with given ID",
+          "responses": {
+            "200": {
+              "description": "User is found",
+              "schema": {
+                "$ref": "#/definitions/Sponsors"
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete sponsor with given ID",
+          "tags": [
+            "Sponsors"
+          ],
+          "responses": {
+            "200": {
+              "description": "Sponsor is deleted",
+              "schema": {
+                "$ref": "#/definitions/Sponsors"
+              }
+            }
+          }
+        },
+        "put": {
+          "summary": "Update sponsor with give ID",
+          "tags": [
+            "Sponsors"
+          ],
+          "parameters": [
+            {
+              "name": "sponsor",
+              "in": "body",
+              "description": "User with new values of properties",
+              "schema": {
+                "$ref": "#/definitions/Sponsors"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sponsor is updated",
+              "schema": {
+                "$ref": "#/definitions/Sponsors"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Sponsors": {
+        "required": [
+          
+          "DateBeginSponsor",
+          "DateEndSponsor",
+          "NameSponsor",
+          "DescriptSponsor",
+          "EmailSponsor",
+          "ImgSponsor",
+          "StatusSponsor"
+        ],
+        "properties": {
+          "_id": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "DateBeginSponsor": {
+            "type": "date",
+            "uniqueItems": true
+          },
+          "DateEndSponsor": {
+            "type": "date",
+            "uniqueItems": true
+          },
+          "NameSponsor": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "EmailSponsor": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "ImgSponsor": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "StatusSponsor": {
+            "type": "boolean",
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  }
