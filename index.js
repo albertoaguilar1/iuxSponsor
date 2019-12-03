@@ -26,8 +26,8 @@ var url = 'mongodb://'+mongo_host+':'+mongo_port+'/museum_db';
 mongoose.connect(url, {
     useUnifiedTopology: true,
     useNewUrlParser: true})
-    .then(() => console.log("Connected to Database"))
-    .catch(err => console.error("Error connecting db", err));
+    .then(() => console.log("Connected to Database"+"____"+url))
+    .catch(err => console.error("Error connecting db", err + url));
 
 var db = mongoose.connection;
 
@@ -44,5 +44,5 @@ app.get('/', (req, res) => res.send('Hello World with Express Sponsor'));
 app.use('/api', apiRoutes);
 // Launch app to listen to specified port
 app.listen(port, function () {
-    console.log("* Running exacta_Server on port " + port);
+    console.log("* Running exacta_ServerSponsor on port " + port);
 });
