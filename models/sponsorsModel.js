@@ -1,6 +1,10 @@
-// usersModel.js
-var mongoose = require('mongoose');
-// Setup schema
+'use strict'
+// Cargamos el módulo de mongoose
+var mongoose =  require('mongoose');
+// Usaremos los esquemas
+
+// Usaremos los esquemas
+// Creamos el objeto del esquema y sus atributos
 var SponsorsSchema = mongoose.Schema({
   //  SPONSOR_id: mongoose.Schema.Types.ObjectId,
   NameSponsor: {

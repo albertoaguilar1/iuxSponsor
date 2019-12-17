@@ -1,24 +1,17 @@
-// Import express
-let express = require('express');
-// Import Body parser
-let bodyParser = require('body-parser');
-// Import Mongoose
-let mongoose = require('mongoose');
-// Initialise the app
-let app = express();
+// Utilizar funcionalidades del Ecmascript 6
+'use strict'
+// Cargamos el módulo de mongoose para poder conectarnos a MongoDB
+var mongoose = require('mongoose');
+// *Cargamos el fichero app.js con la configuración de Express
+var app = require('./app');
+// Creamos la variable PORT para indicar el puerto en el que va a funcionar el servidor
+var port = 3800;
+// Le indicamos a Mongoose que haremos la conexión con Promesas
+mongoose.Promise = global.Promise;
+// Usamos el método connect para conectarnos a nuestra base de datos
 
-// Import routes
-let apiRoutes = require('./api-routes');
-let swaggerUi = require('swagger-ui-express');
-let swaggerDocument = require('./swagger.json');
-// Configure bodyparser to handle post requests
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(bodyParser.json());
-// Connect to Mongoose and set connection variable
+//mongoose.connect('mongodb://192.168.99.100:32768/museum_db', { useNewUrlParser: true});
 
-//mongoose.connect('mongodb://localhost:27017/museum_db', { useNewUrlParser: true});
 var mongo_host = (process.env.MONGO_SERVICE_HOST || 'localhost' );
 var mongo_port = (process.env.MONGO_SERVICE_PORT || 27017 );
 var url = 'mongodb://'+mongo_host+':'+mongo_port+'/museum_db';
@@ -26,23 +19,23 @@ var url = 'mongodb://'+mongo_host+':'+mongo_port+'/museum_db';
 mongoose.connect(url, {
     useUnifiedTopology: true,
     useNewUrlParser: true})
-    .then(() => console.log("Connected to Database"+"____"+url))
-    .catch(err => console.error("Error connecting db", err + url));
+    .then(() => console.log("La conexión a la base de datos museum_db se ha realizado correctamente"+"_"+url))
+    .catch(err => console.log("Error connecting db", err + url));
 
 var db = mongoose.connection;
+
 
 // Setup server port
 var port = process.env.PORT || 8083;
 
-// Send message for default URL
-app.use('/api-docs/sponsors', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+    
+        // CREAR EL SERVIDOR WEB CON NODEJS
+        app.listen(port, () => {
+            console.log("** Running ServerUser on port **" + port);
+        });
+  
 
-app.get('/', (req, res) => res.send('Hello World with Express Sponsor'));
+    
 
-// Use Api routes in the App
 
-app.use('/api', apiRoutes);
-// Launch app to listen to specified port
-app.listen(port, function () {
-    console.log("* Running exacta_ServerSponsor on port " + port);
-});
+
