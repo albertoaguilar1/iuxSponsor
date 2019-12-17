@@ -1,6 +1,6 @@
 'use strict'
 // Cargamos los modelos para usarlos posteriormente
-var Sponsors = require('./model/sponsorsModel');
+var Sponsors = require('../models/sponsorsModel');
 
 
 
@@ -165,7 +165,7 @@ exports.update = (req, res) => {
             });                
         }
         return res.status(500).send({
-            message: "Error updating user with id " + req.params.sponsors_id,
+            message: "Error updating sponsor with id " + req.params.sponsors_id,
             status:'500',
             data: err
         });
