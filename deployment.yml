@@ -1,0 +1,33 @@
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: exatasponsor
+spec:
+  replicas: 2
+  template: 
+    metadata:
+      labels:
+        run: exatasponsor
+    spec:
+      containers:
+      - name: exatasponsor
+        image: us.icr.io/iux-miaspace1/iux-sponsors
+        ports:
+        - containerPort: 8083
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: exatasponsor
+  labels:
+    run: exatasponsor
+spec:
+  ports:
+  - port: 80
+    targetPort: 8083
+    protocol: TCP
+  type: NodePort
+  selector:
+    run: exatasponsor
