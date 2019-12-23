@@ -21,6 +21,47 @@ exports.index = function (req, res) {
     });
 };
 
+// Handle view  info
+exports.viewEmail= (req, res) => {
+    console.log("viewEmail"); 
+  // Validate request
+  if(!req.params.EmailSponsor) {
+    return res.status(400).send({
+        message: "User EmailSponsor can not be empty"
+    });
+}
+       
+        Sponsors.findOne({EmailSponsor:req.params.EmailSponsor})
+    .then(sponsors => {
+        if(!sponsors) {
+            return res.status(404).send({
+                message: "User not found with email " + req.params.EmailSponsor,
+                status:'400',
+                data: err
+            });            
+        }
+        return res.status(200).send({
+            status: "success",
+            message: "Sponsor found",
+            data: sponsors
+        });
+   
+    }).catch(err => {
+        console.log(err)
+        if(err.kind === 'EmailSponsor') {
+            return res.status(404).send({
+                message: "Sponsor not found with email " + req.params.EmailSponsor,
+                status:'404',
+                data: err
+            });                
+        }
+        return res.status(500).send({
+            message: "Error retrieving Sponsor with email " + req.params.EmailSponsor,
+            status:'500',
+            data: err
+        });
+    });
+};
 
 
 
@@ -112,26 +153,18 @@ exports.new= (req, res) => {
 
 // Update a sponsor identified by the sponsors_id in the request
 exports.update = (req, res) => {
-
     console.log("update  " +   req.params.sponsors_id); 
-    // Validate Request
-    if(!req.params.sponsors_id) {
-        return res.status(400).send({
-            message: "Sponsor id can not be empty"
-        });
-    }
-
 
       // Validate Request
       if(!req.body) {
-        console.log("update  " +  req.body); 
+        console.log("update " +  req.body); 
         return res.status(400).send({
             message: "Sponsor body can not be empty"
         });
     }
 
     // Find note and update it with the request body
-    Sponsor.findByIdAndUpdate(req.params.sponsors_id, {
+    Sponsors.findByIdAndUpdate(req.params.sponsors_id, {
         NameSponsor : req.body.NameSponsor ? req.body.NameSponsor : sponsors.NameSponsor,
         DescriptSponsor : req.body.DescriptSponsor,
         EmailSponsor : req.body.EmailSponsor,
@@ -141,10 +174,10 @@ exports.update = (req, res) => {
         DateEndSponsor : req.body.DateEndSponsor
 
     }, {new: true})
-    .then(sponsor => {
-        if(!sponsor) {
+    .then(sponsors => {
+        if(!sponsors) {
             return res.status(404).send({
-                message: "User not found with id " + req.params.sponsors_id,
+                message: "Sponsors not found with id " + req.params.sponsors_id,
                     status:'404',
                     data: err
             });
@@ -152,7 +185,7 @@ exports.update = (req, res) => {
         return res.status(200).send({
             message: 'sponsor Info updated',
             status:"success",
-            data: sponsor
+            data: sponsors
         });
       
            
@@ -175,37 +208,37 @@ exports.update = (req, res) => {
 
 // Delete a Sponsor with the specified SponsorId in the request
 exports.delete = (req, res) => {
-    console.log("delete  " +    req.params.sponsors_id); 
-    if(! req.params.sponsors_id) {
+    console.log("delete  " +  req.params.sponsors_id); 
+    if(!req.params.sponsors_id) {
         return res.status(400).send({
-            message: "Sponsor content can not be empty"
+            message: "Sponsors content can not be empty"
         });
     }
 
-    Sponsor.findByIdAndRemove( req.params.sponsors_id)
-    .then(sponsor => {
-        if(!sponsor) {
+    Sponsors.findByIdAndRemove(req.params.sponsors_id)
+    .then(sponsors => {
+        if(!sponsors) {
             return res.status(404).send({
-                message: "Sponsor not found with id " + req.params.sponsors_id,
+                message: "Sponsors not found with id " + req.params.sponsors_id,
                 status:'404',
                 data: err
             });
         }
         res.send({  
-            message: "Sponsor deleted successfully!",
+            message: "Sponsors deleted successfully!",
             status:"success",
-            data: sponsor
+            data: sponsors
         });
     }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({
-                message: "Sponsor not found with id " + req.params.sponsors_id ,
+                message: "Sponsors not found with id " + req.params.sponsors_id,
                 status:'404',
                 data: err
             });                
         }
         return res.status(500).send({
-            message: "Could not delete sponsor with id " +  req.params.sponsors_id,
+            message: "Could not delete Sponsor with id " + req.params.sponsors_id,
             status:'500',
             data: err
         });

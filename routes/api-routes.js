@@ -28,5 +28,9 @@ router.route('/sponsors/:sponsors_id')
 .delete(sponsorsController.delete);
 
 
+router.route('/sponsors/email/:EmailSponsor')
+.get(sponsorsController.viewEmail)
+
+
 // Exportamos la configuración
 module.exports=router ;
