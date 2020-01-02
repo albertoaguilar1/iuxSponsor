@@ -6,7 +6,8 @@ var express = require('express');
 var router = express.Router();
 // Cargamos el controlador
 var sponsorsController = require('../controllers/sponsorsController');
-
+//cargamos la utilidad para verificar token
+var authenticated = require('../middlewares/authenticated');
 
 router.get('/',function(req,res){
     res.json({
@@ -22,7 +23,7 @@ router.route('/sponsors')
 .post(sponsorsController.new);
 
 router.route('/sponsors/:sponsors_id')
-.get(sponsorsController.view)
+.get(authenticated,sponsorsController.view)
 .patch(sponsorsController.update)
 .put(sponsorsController.update)
 .delete(sponsorsController.delete);

@@ -158,3 +158,8 @@
 ::ffff:127.0.0.1 - - [23/Dec/2019:18:08:45 +0000] "DELETE /api/sponsors/5e0102adea473371588b67b9 HTTP/1.1" 200 401 "-" "node-superagent/3.8.3"
 ::ffff:127.0.0.1 - - [23/Dec/2019:18:08:45 +0000] "DELETE /api/sponsors/1234 HTTP/1.1" 404 253 "-" "node-superagent/3.8.3"
 ::ffff:127.0.0.1 - - [23/Dec/2019:18:08:45 +0000] "DELETE /api/sponsors/5e0102adea473371588b67b9 HTTP/1.1" 500 96 "-" "node-superagent/3.8.3"
+::1 - - [26/Dec/2019:08:34:41 +0000] "GET /api/sponsors/5dc0a3610169ef9b60e32476 HTTP/1.1" 403 64 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+::1 - - [26/Dec/2019:08:35:43 +0000] "GET /api/sponsors/5dc0a3610169ef9b60e32476 HTTP/1.1" 500 96 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+::1 - - [26/Dec/2019:08:35:53 +0000] "GET /api/sponsors HTTP/1.1" 200 410 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+::1 - - [26/Dec/2019:08:36:04 +0000] "GET /api/sponsors/5dd468f14afbe1452ce57fa6 HTTP/1.1" 200 391 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+::1 - - [26/Dec/2019:08:46:14 +0000] "GET /api/sponsors/5dd468f14afbe1452ce57fa6 HTTP/1.1" 200 391 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
