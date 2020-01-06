@@ -19,14 +19,14 @@ router.get('/',function(req,res){
 
     // Contact routes
 router.route('/sponsors')
-.get(sponsorsController.index)
-.post(sponsorsController.new);
+.get(authenticated,sponsorsController.index)
+.post(authenticated,sponsorsController.new);
 
 router.route('/sponsors/:sponsors_id')
 .get(authenticated,sponsorsController.view)
-.patch(sponsorsController.update)
-.put(sponsorsController.update)
-.delete(sponsorsController.delete);
+.patch(authenticated,sponsorsController.update)
+.put(authenticated,sponsorsController.update)
+.delete(authenticated,sponsorsController.delete);
 
 
 router.route('/sponsors/email/:EmailSponsor')
