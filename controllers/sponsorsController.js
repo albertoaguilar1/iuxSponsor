@@ -3,21 +3,25 @@
 var Sponsors = require('../models/sponsorsModel');
 
 
-
 // Handle index actions
 exports.index = function (req, res) {
+    console.log("index")
     Sponsors.get(function (err, sponsors) {
         if (err) {
-            res.json({
+          
+            return res.status(404).send({
                 status: "error",
                 message: err,
             });
         }
-        res.json({
+
+           return res.status(200).send({
+            
             status: "success",
-            message: "Sponsors retrieved successfully",
+            message: "sponsors retrieved successfully",
             data: sponsors
         });
+      
     });
 };
 
@@ -27,7 +31,7 @@ exports.viewEmail= (req, res) => {
   // Validate request
   if(!req.params.EmailSponsor) {
     return res.status(400).send({
-        message: "User EmailSponsor can not be empty"
+        message: "Sponsor EmailSponsor can not be empty"
     });
 }
        
@@ -35,7 +39,7 @@ exports.viewEmail= (req, res) => {
     .then(sponsors => {
         if(!sponsors) {
             return res.status(404).send({
-                message: "User not found with email " + req.params.EmailSponsor,
+                message: "Sponsor not found with email " + req.params.EmailSponsor,
                 status:'400',
                 data: err
             });            
@@ -125,7 +129,7 @@ exports.new= (req, res) => {
     sponsors.EmailSponsor = req.body.EmailSponsor;
     sponsors.ImgSponsor = req.body.ImgSponsor;
     sponsors.StatusSponsor = req.body.StatusSponsor;
-    sponsors.DateBeginSponsor = req.body.DateBeginSponsor;
+    sponsors.DateBeginSponsor = req.body.DateBeginSponsor ? req.body.DateBeginSponsor : new Date();
     sponsors.DateEndSponsor = req.body.DateEndSponsor;
 
 
@@ -141,9 +145,9 @@ exports.new= (req, res) => {
     }).catch(err => {
 
        
-        res.status(500).send({
+        res.status(400).send({
             message: err.message || "Some error occurred while creating the sponsors.",
-            status:'500',
+            status:'400',
             data: err
            
         });
@@ -170,7 +174,6 @@ exports.update = (req, res) => {
         EmailSponsor : req.body.EmailSponsor,
         ImgSponsor : req.body.ImgSponsor,
         StatusSponsor : req.body.StatusSponsor,
-        DateBeginSponsor: req.body.DateBeginSponsor,
         DateEndSponsor : req.body.DateEndSponsor
 
     }, {new: true})

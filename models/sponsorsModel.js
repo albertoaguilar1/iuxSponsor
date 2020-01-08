@@ -34,7 +34,7 @@ var SponsorsSchema = mongoose.Schema({
     }, 
     DateEndSponsor: {
         type: Date,
-        default: Date.now
+        required: true
     }
 
 });
