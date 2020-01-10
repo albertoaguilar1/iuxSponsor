@@ -14,7 +14,8 @@
     "tags": [
       {
         "name": "Api:Sponsors",
-        "description": "API para el manejo de operaciones con sponsors"
+        "description": "API para el manejo de operaciones con sponsors", 
+        "summary":"API para el manejo de operaciones con sponsors"
       }
     ],
     "schemes": [
@@ -31,10 +32,22 @@
 
         "post": {
           "tags": [
-            ""
+          "Sponsors"
+   
           ],
           "description": "Create new Sponsors in system",
+          "summary":"Create new Sponsors in system",
+
           "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization",
+              "schema": {
+              "type":"String",
+              "format":"String",
+              "required":true
+              } },
             {
               "name": "Sponsors",
               "in": "body",
@@ -62,7 +75,19 @@
           "tags": [
             "Sponsors"
           ],
-          "summary": "Get all test in system",
+          "summary": "Get all events in system",
+          "description":"Get all events in system",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization",
+              "schema": {
+              "type":"String",
+              "format":"String",
+              "required":true
+              } }
+          ],
           "responses": {
             "200": {
               "description": "OK",
@@ -73,10 +98,19 @@
           }
         }
       },
-      "/sponsor/{sponsorId}": {
-        "parameters": [
+      "/sponsors/{sponsorId}": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization",
+              "schema": {
+              "type":"String",
+              "format":"String",
+              "required":true
+              } },
           {
-            "name": "sponsor",
+            "name": "sponsorId",
             "in": "path",
             "required": true,
             "description": "ID of Sponsors that we want to find",
@@ -88,6 +122,7 @@
             "Sponsors"
           ],
           "summary": "Get Sponsors with given ID",
+          "description":"Get Sponsors with given ID",
           "responses": {
             "200": {
               "description": "User is found",
@@ -97,26 +132,30 @@
             }
           }
         },
-        "delete": {
-          "summary": "Delete sponsor with given ID",
-          "tags": [
-            "Sponsors"
-          ],
-          "responses": {
-            "200": {
-              "description": "Sponsor is deleted",
-              "schema": {
-                "$ref": "#/definitions/Sponsors"
-              }
-            }
-          }
-        },
         "put": {
           "summary": "Update sponsor with give ID",
+          "description":"Update sponsor with give ID",
           "tags": [
             "Sponsors"
           ],
           "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization",
+              "schema": {
+              "type":"String",
+              "format":"String",
+              "required":true
+              } },
+          {
+            "name": "sponsorId",
+            "in": "path",
+            "required": true,
+            "description": "ID of Sponsors that we want to find",
+            "type": "string"
+          }
+        ,
             {
               "name": "sponsor",
               "in": "body",
@@ -134,7 +173,42 @@
               }
             }
           }
+        },
+        "delete": {
+          "summary": "Delete sponsor with given ID",
+          "description":"Delete sponsor with given ID",
+          "tags": [
+            "Sponsors"
+          ], "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization",
+              "schema": {
+              "type":"String",
+              "format":"String",
+              "required":true
+              } },
+          {
+            "name": "sponsorId",
+            "in": "path",
+            "required": true,
+            "description": "ID of Sponsors that we want to find",
+            "type": "string"
+          }
+        
+          ]
+        ,
+          "responses": {
+            "200": {
+              "description": "Sponsor is deleted",
+              "schema": {
+                "$ref": "#/definitions/Sponsors"
+              }
+            }
+          }
         }
+        
       }
     },
     "definitions": {
