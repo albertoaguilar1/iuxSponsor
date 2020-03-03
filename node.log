@@ -324,3 +324,4 @@
 ::1 - - [10/Jan/2020:02:06:11 +0000] "GET /api/sponsors/5e17db945db16ebde83d01a1 HTTP/1.1" 200 384 "http://localhost:8083/api-docs/sponsors/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
 ::1 - - [10/Jan/2020:02:07:09 +0000] "PUT /api/sponsors/5e17db945db16ebde83d01a1 HTTP/1.1" 200 390 "http://localhost:8083/api-docs/sponsors/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
 ::1 - - [10/Jan/2020:02:07:39 +0000] "DELETE /api/sponsors/5e17db945db16ebde83d01a1 HTTP/1.1" 200 400 "http://localhost:8083/api-docs/sponsors/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+::1 - - [03/Mar/2020:19:58:38 +0000] "POST /api/sponsors HTTP/1.1" 200 391 "-" "PostmanRuntime/7.22.0"
