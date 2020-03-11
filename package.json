@@ -1,5 +1,5 @@
 {
-  "name": "exatasponsor",
+  "name": "iuxsponsor",
   "version": "1.0.0",
   "description": "microservicio Sponsors",
   "main": "index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/albertoaguilar1/exataSponsor.git"
+    "url": "git+https://github.com/albertoaguilar1/iuxSponsor.git"
   },
   "keywords": [
     "sponsors"
@@ -18,9 +18,9 @@
   "author": "jaguilarh",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/albertoaguilar1/exataSponsor/issues"
+    "url": "https://github.com/albertoaguilar1/iuxSponsor/issues"
   },
-  "homepage": "https://github.com/albertoaguilar1/exataSponsor#readme",
+  "homepage": "https://github.com/albertoaguilar1/iuxSponsor#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
@@ -43,7 +43,6 @@
     "mocha": "^5.2.0",
     "nodemon": "^1.17.4",
     "chai-http": "^4.3.0",
-    "supertest": "^4.0.2",
-    "morgan": "^1.9.1"
+    "supertest": "^4.0.2"
   }
 }
