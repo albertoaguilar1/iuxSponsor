@@ -6,9 +6,9 @@ var bodyParser = require('body-parser');
 // Llamamos a express para poder crear el servidor
 var app = express();
 // Importamos las rutas
-var sponsor_routes = require('./routes/api-routes'); 
+var sponsor_routes = require('./routes/api-routes');
 //cargamos morgan
-var morgan = require('morgan');
+//var morgan = require('morgan');
 
 // Cargamos la apide swageger para documetar 
 var swaggerUi = require('swagger-ui-express');
@@ -16,13 +16,13 @@ var swaggerDocument = require('./swagger.json');
 //cargar middlewares
 //un metodo que se ejecuta antes que llegue a un controlador
 //Configuramos bodyParser para que convierta el body de nuestras peticiones a JSON
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Cargamos las rutas
 
 ////////////////////////  Configuración para Morgan y creación del stream node.lo
 var fs = require('fs'); var util = require('util');
-app.use(morgan('combined', {stream: fs.createWriteStream(__dirname + '/node.log', {flags : 'a'})}));
+//app.use(morgan('combined', {stream: fs.createWriteStream(__dirname + '/node.log', {flags : 'a'})}));
 
 // Send message for default URL
 
@@ -36,7 +36,7 @@ app.use('/api', sponsor_routes);
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
 
@@ -45,13 +45,13 @@ app.use(function(req, res, next) {
 });
 
 // handle error, print stacktrace
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.json({
         message: err.message,
         error: err
-      });
-      
+    });
+
 });
 
 // Exportamos la configuración

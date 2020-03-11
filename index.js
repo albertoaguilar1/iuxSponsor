@@ -12,8 +12,8 @@ mongoose.Promise = global.Promise;
 
 //mongoose.connect('mongodb://192.168.99.100:32768/museum_db', { useNewUrlParser: true});
 
-var mongo_host = (process.env.MONGO_SERVICE_HOST || 'localhost');
-var mongo_port = (process.env.MONGO_SERVICE_PORT || 27017);
+//var mongo_host = (process.env.MONGO_SERVICE_HOST || 'localhost');
+//var mongo_port = (process.env.MONGO_SERVICE_PORT || 27017);
 //var url = 'mongodb://'+mongo_host+':'+mongo_port+'/museum_db';
 
 
